@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://deoanpdo2duja"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_70uyf"]
+[ext_resource type="Texture2D" uid="uid://x0o2xhtv12i4" path="res://art/enemyFlyingAlt_1.png" id="1_g717v"]
+[ext_resource type="Texture2D" uid="uid://dogy2qnvolobw" path="res://art/enemyFlyingAlt_2.png" id="2_4834f"]
+[ext_resource type="Texture2D" uid="uid://b3f1dtpyssj7n" path="res://art/enemySwimming_1.png" id="3_nwmpc"]
+[ext_resource type="Texture2D" uid="uid://dngg8yn2jpyb6" path="res://art/enemySwimming_2.png" id="4_lexge"]
+[ext_resource type="Texture2D" uid="uid://bdtgtldnoi0jq" path="res://art/enemyWalking_1.png" id="5_ycv76"]
+[ext_resource type="Texture2D" uid="uid://cbe1xpy8dt4id" path="res://art/enemyWalking_2.png" id="6_uwd1a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_duv2m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g717v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4834f")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nwmpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lexge")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ycv76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uwd1a")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ou6c"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_70uyf")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_duv2m")
+animation = &"walk"
+frame_progress = 0.384557
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(-3.3, 4.34542)
+shape = SubResource("CapsuleShape2D_7ou6c")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CollisionShape2D"]
+scale = Vector2(0.955637, 1)
