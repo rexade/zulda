@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddq60mm7bu8jh"]
+
+[ext_resource type="PackedScene" uid="uid://eqkuwe6c5q58" path="res://player.tscn" id="1_rrcx4"]
+[ext_resource type="ArrayMesh" uid="uid://cd50ciwurwvyk" path="res://room.vox" id="2_0cycg"]
+[ext_resource type="ArrayMesh" uid="uid://bnsifcvfy0ek5" path="res://doom.vox" id="3_nhyf2"]
+[ext_resource type="ArrayMesh" uid="uid://dmjo8ekvyrd00" path="res://cars.vox" id="4_0o71d"]
+[ext_resource type="ArrayMesh" uid="uid://olg2iohvhkkt" path="res://water.vox" id="5_7nbxc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kejqc"]
+margin = 0.226
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sl23h"]
+size = Vector3(60, 1, 60)
+
+[node name="Node" type="Node"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_kejqc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(0.999903, 0.0138803, -0.000748529, -0.013885, 0.999881, -0.00671984, 0.000655161, 0.00672959, 0.999977, 0, -1.00067, 0)
+mesh = SubResource("BoxMesh_sl23h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.782619, -0.3139, 0.537563, 0, 0.863554, 0.504256, -0.622501, -0.394641, 0.675834, 7.58287, 7.87225, 0)
+light_indirect_energy = 1.323
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 0.91
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.481
+shadow_normal_bias = 0.0
+shadow_blur = 1.476
+
+[node name="player" parent="." instance=ExtResource("1_rrcx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0807953, 2.14375, 0.0527687)
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(0.808776, -0.0527517, 0.585747, -0.00376102, 0.995485, 0.0948455, -0.588105, -0.0789117, 0.804926, 15.8108, 9.21037, 22.6391)
+gizmo_extents = 0.34
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, -7.45058e-08, 5.96046e-08, 2.23517e-08, 1, -7.45058e-09, -2.98023e-08, -7.45058e-09, 1, -2.94517, 0.586277, 4.3673)
+fov = 95.8
+
+[node name="Room" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.197, 2.02379, -1.92614)
+rotation_edit_mode = 2
+sorting_use_aabb_center = false
+lod_bias = 0.001
+ignore_occlusion_culling = true
+mesh = ExtResource("2_0cycg")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.994151, -0.107999, 0, 0.107999, -0.994151, -9.34523, 15.3783, -14.0758)
+light_energy = 3.585
+light_indirect_energy = 3.263
+light_size = 0.182
+shadow_enabled = true
+spot_range = 68.2881
+spot_attenuation = 5.85634
+spot_angle = 54.8438
+spot_angle_attenuation = 1.93187
+
+[node name="Doom" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1304, 1, 2.27688)
+mesh = ExtResource("3_nhyf2")
+
+[node name="Cars" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5944, 4.29737, 19.6684)
+mesh = ExtResource("4_0o71d")
+
+[node name="Cars2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8042, 20.9729, 29.2748)
+mesh = ExtResource("4_0o71d")
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7047, 0.0611458, 13.5554)
+mesh = ExtResource("5_7nbxc")

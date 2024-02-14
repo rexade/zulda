@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlc07qbql24hp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cd50ciwurwvyk" path="res://room.vox" id="1_4jmlu"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35403, -2.47273, 2.99648)
+
+[node name="Room" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98965, 0, -4.44659)
+visibility_range_end = 78.02
+mesh = ExtResource("1_4jmlu")
+
+[node name="Node" type="Node" parent="."]
